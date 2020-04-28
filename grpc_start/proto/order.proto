@@ -1,0 +1,40 @@
+syntax = "proto3";
+package order;
+
+import "google/api/annotations.proto";
+
+service Order {
+
+    //a simple RPC
+    //create new order
+    //rpc Add (OrderParams) returns (OrderResult) {}
+    rpc Add(OrderParams) returns (OrderResult) {
+        option (google.api.http) = {
+          post: "/v1/example/echo"
+          body: "*"
+        };
+      }
+}
+
+message OrderParams {
+    string amount = 1; //订单金额
+    int64 buyerID = 2; //购买用户ID
+
+    enum Device {
+        IOS = 0;
+        ANDROID = 1;
+    }
+    Device device = 3;
+    repeated Sku sku = 4;
+}
+
+message Sku {
+    int32 num = 1;
+    string skuId = 2;
+    int32 unitPrice = 3;
+}
+
+message OrderResult {
+    int32 statusCode = 1;
+    string orderID = 2;
+}
