@@ -1,0 +1,24 @@
+syntax="proto3";
+
+package services;
+
+message ProdRequest {
+  int32 prod_id=1; //商品id
+}
+
+message ProdResponse {
+  int32 prod_stock=1; //商品库存
+}
+
+message QuerySize {
+  int32 size=1;
+}
+
+message ProdListResponse {
+  repeated ProdResponse prodInfo=1;
+}
+
+service ProdService {
+  rpc GetProdStock(ProdRequest) returns (ProdResponse);
+  rpc GetProdStocks(QuerySize) returns (ProdListResponse);
+}
