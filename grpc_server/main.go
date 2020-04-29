@@ -15,5 +15,7 @@ func main()  {
 	if err != nil {
 		log.Fatal(err)
 	}
-	grpcServer.Serve(listener)
+	if err := grpcServer.Serve(listener); err != nil {
+		log.Fatal(err)
+	}
 }
