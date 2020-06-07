@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"go_demo/grpc_client/services"
 	"google.golang.org/grpc"
 	"log"
-	"start/grpc_client/services"
 )
 
 func main() {
