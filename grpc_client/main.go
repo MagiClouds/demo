@@ -16,19 +16,38 @@ func main() {
 	defer conn.Close()
 	ctx := context.Background()
 
-	prodClient := services.NewProdServiceClient(conn)
+	//prodClient := services.NewProdServiceClient(conn)
 	//prodRes, err := prodClient.GetProdStock(ctx, &services.ProdRequest{ProdId:10})
 	//if err != nil {
 	//	log.Fatal(err)
 	//}
 
-	res, err := prodClient.GetProdStocks(ctx, &services.QuerySize{Size:3})
+	//res, err := prodClient.GetProdStocks(ctx, &services.QuerySize{Size:3})
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+
+	//for _, i := range res.ProdInfo {
+	//	fmt.Println(i)
+	//}
+
+	client := services.NewGreeterClient(conn)
+
+	reply, err := client.SayHello(ctx, &services.HelloRequest{Name: "Grpc"})
 	if err != nil {
-		log.Fatal(err)
+		panic("hahha say hello failed")
 	}
 
-	for _, i := range res.ProdInfo {
-		fmt.Println(i)
+	fmt.Println(reply.Message)
+
+	replyAgain, err := client.SayHello(ctx, &services.HelloRequest{Name: "Grpc"})
+	if err != nil {
+		panic("hahha say hello failed")
 	}
+
+	fmt.Println(replyAgain.Message)
+
+
+
 
 }
