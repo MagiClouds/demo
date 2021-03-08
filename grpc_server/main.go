@@ -7,9 +7,10 @@ import (
 	"start/grpc_server/services"
 )
 
-func main()  {
+func main() {
 	grpcServer := grpc.NewServer()
 	services.RegisterProdServiceServer(grpcServer, new(services.ProdService))
+	services.RegisterGreeterServer(grpcServer, new(services.GreeterServerServer))
 
 	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {
