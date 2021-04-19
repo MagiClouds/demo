@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package hello_world;
+
+//option go_package = "go_demo/new_micro";
+
+service Greeter {
+    rpc SayHello(SayRequest) returns (SayResponse) {}
+}
+
+message SayRequest {
+    string message = 1;
+}
+
+message SayResponse {
+    string answer = 1;
+}
+
+
+
