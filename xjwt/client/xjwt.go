@@ -23,7 +23,7 @@ func main() {
 		"aud": "lora-app-server",
 		"nbf": time.Now().Unix(),
 		"exp": time.Date(2021, 11, 1, 0, 0, 0, 0, time.UTC).Unix(),
-		"sub": "user",
+		"sub": "user2",
 		"username": "admin",
 	})
 

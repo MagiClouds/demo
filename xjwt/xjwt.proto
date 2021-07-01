@@ -24,7 +24,9 @@ message DeleteXjwtRequest {}
 message DeleteXjwtReply {}
 
 message GetXjwtRequest {}
-message GetXjwtReply {}
+message GetXjwtReply {
+    string token = 1;
+}
 
 message ListXjwtRequest {}
 message ListXjwtReply {}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"go_demo/xjwt"
 	"google.golang.org/grpc"
 	"log"
@@ -57,7 +58,8 @@ func (s *server) GetXjwt(ctx context.Context, r *xjwt.GetXjwtRequest) (*xjwt.Get
 	}
 
 	log.Printf("token: %v", token.Claims)
-	return &xjwt.GetXjwtReply{}, nil
+
+	return &xjwt.GetXjwtReply{Token: fmt.Sprintf("%v", token.Claims)}, nil
 }
 
 func (s *server) ListXjwt(context.Context, *xjwt.ListXjwtRequest) (*xjwt.ListXjwtReply, error) {
@@ -93,6 +95,7 @@ func main() {
 	defer lis.Close()
 
 	var opts []grpc.ServerOption
+	opts = append(opts)
 	s := grpc.NewServer(opts...)
 	xjwt.RegisterXjwtServer(s, &server{})
 	s.Serve(lis)
