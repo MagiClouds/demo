@@ -1,6 +1,6 @@
 module start/go_kit
 
-go 1.15
+go 1.13
 
 require (
 	github.com/go-kit/kit v0.10.0

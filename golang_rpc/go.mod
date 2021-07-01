@@ -1,3 +1,3 @@
 module go_demo/golang_rpc
 
-go 1.14
+go 1.13

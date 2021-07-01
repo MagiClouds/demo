@@ -13,14 +13,15 @@ var vo = esSort{}
 
 func main() {
 
+	a := make([]int, 0)
 	for i := 0; i < 100; i++ {
 		go func(i int) {
-			vo.Order = fmt.Sprint("i: ", i)
-			time.Sleep(time.Millisecond)
-			fmt.Println(vo.Order)
+			a = append(a, i)
 		}(i)
 	}
 
-	time.Sleep(10*time.Second)
+	time.Sleep(2*time.Second)
+
+	fmt.Println("slice len ---", len(a))
 
 }

@@ -1,3 +1,3 @@
 module go_demo/lru
 
-go 1.15
+go 1.13
