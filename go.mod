@@ -8,6 +8,7 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/golang/protobuf v1.5.2
+	github.com/google/wire v0.5.0
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/micro/v3 v3.3.0

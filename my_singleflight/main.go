@@ -47,6 +47,44 @@ func main() {
 
 	}
 
-	time.Sleep(20 * time.Second)
+	time.Sleep(5 * time.Second)
+
+	value, _ := getAndSetCache(11, cacheKey)
+
+	log.Printf("request %v get value: %v", 11, value)
 
 }
+
+//
+//var sf singleflight.Group
+//
+//func OnceInRedis(key string, expiration time.Duration, f func() (interface{}, error), vo interface{}) error {
+//	do, err, _ := sf.Do(key, func() (i interface{}, err error) {
+//		result, err := redisCache.Get(key).Bytes()
+//		if err != nil && err != redis.Nil {
+//			return nil, err
+//		}
+//
+//		if err != redis.Nil {
+//			return result, nil
+//		}
+//
+//		data, err := f()
+//		if err != nil {
+//			return nil, err
+//		}
+//
+//		result, _ = json.Marshal(data)
+//
+//		if err = redisCache.Set(key, result, expiration).Err(); err != nil {
+//			return nil, err
+//		}
+//
+//		return result, nil
+//	})
+//	if err != nil {
+//		return err
+//	}
+//
+//	return json.Unmarshal(do.([]byte), vo)
+//}
