@@ -1,4 +1,4 @@
-package my_heap
+package myheap
 
 type entry struct {
 	priority int
@@ -33,5 +33,4 @@ func (pq *PriorityQueue) Pop() interface{} {
 	*pq = (*pq)[:n-1]
 
 	return item
-
 }
