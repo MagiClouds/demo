@@ -1,4 +1,4 @@
-package my_map
+package mymap
 
 //sync map
 //读写锁map
