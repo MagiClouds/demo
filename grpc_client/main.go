@@ -6,6 +6,7 @@ import (
 	"go_demo/grpc_client/services"
 	"google.golang.org/grpc"
 	"log"
+	"time"
 )
 
 func main() {
@@ -14,7 +15,6 @@ func main() {
 		log.Fatal(err)
 	}
 	defer conn.Close()
-	ctx := context.Background()
 
 	//prodClient := services.NewProdServiceClient(conn)
 	//prodRes, err := prodClient.GetProdStock(ctx, &services.ProdRequest{ProdId:10})
@@ -33,9 +33,12 @@ func main() {
 
 	client := services.NewGreeterClient(conn)
 
+	ctx, cancelFunc := context.WithTimeout(context.Background(), time.Microsecond)
+	defer cancelFunc()
+
 	reply, err := client.SayHello(ctx, &services.HelloRequest{Name: "Grpc"})
 	if err != nil {
-		panic("hahha say hello failed")
+		panic(err.Error())
 	}
 
 	fmt.Println(reply.Message)
