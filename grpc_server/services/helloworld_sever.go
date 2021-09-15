@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"fmt"
 )
 
 type GreeterServerServer struct {
@@ -9,6 +10,10 @@ type GreeterServerServer struct {
 }
 
 func (g *GreeterServerServer) SayHello(c context.Context, h *HelloRequest) (*HelloReply, error) {
+	deadline, ok := c.Deadline()
+	if ok {
+		fmt.Println(deadline)
+	}
 	return &HelloReply{Message: "hello" + h.Name}, nil
 
 }

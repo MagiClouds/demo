@@ -7,6 +7,7 @@ require (
 	github.com/coreos/etcd v3.3.18+incompatible
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
+	github.com/go-kratos/aegis v0.1.1 // indirect
 	github.com/golang/mock v1.6.0
 	github.com/golang/protobuf v1.5.2
 	github.com/google/wire v0.5.0

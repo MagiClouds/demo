@@ -33,7 +33,7 @@ func main() {
 
 	client := services.NewGreeterClient(conn)
 
-	ctx, cancelFunc := context.WithTimeout(context.Background(), time.Microsecond)
+	ctx, cancelFunc := context.WithTimeout(context.Background(), time.Second)
 	defer cancelFunc()
 
 	reply, err := client.SayHello(ctx, &services.HelloRequest{Name: "Grpc"})
@@ -43,7 +43,7 @@ func main() {
 
 	fmt.Println(reply.Message)
 
-	replyAgain, err := client.SayHello(ctx, &services.HelloRequest{Name: "Grpc"})
+	replyAgain, err := client.SayHello(ctx, &services.HelloRequest{Name: "timeout"})
 	if err != nil {
 		panic("hahha say hello failed")
 	}

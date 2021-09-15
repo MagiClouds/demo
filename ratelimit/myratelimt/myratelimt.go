@@ -15,6 +15,5 @@ func main() {
 		fmt.Println(i, now.Sub(prev))
 		prev = now
 	}
-
 }
 
